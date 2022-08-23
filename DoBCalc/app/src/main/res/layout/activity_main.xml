@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/paddingNormal"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/paddingNormal"
+        android:text="@string/calculate_your"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/textLarge"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:background="@color/accent"
+        android:padding="@dimen/paddingSmall"
+        android:text="@string/age"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textLarge"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/in_minutes"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/textLarge"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:backgroundTint="@color/alternate"
+        android:text="@string/select_date"
+        android:textSize="@dimen/textNormal"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/selectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text=""
+        android:textColor="@color/primary"
+        android:textSize="@dimen/textLarge"
+        android:textStyle="bold"
+        tools:text="22.9.2022" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/selected_date"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/textNormal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ageInMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text=""
+        android:textColor="@color/primary"
+        android:textSize="@dimen/textLarge"
+        android:textStyle="bold"
+        tools:text="1234567890" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/in_minutes_till_date"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/textNormal"
+        android:textStyle="bold" />
+
+</LinearLayout>
