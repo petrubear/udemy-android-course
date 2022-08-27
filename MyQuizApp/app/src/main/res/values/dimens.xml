@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textLarger">30sp</dimen>
+    <dimen name="textLarge">25sp</dimen>
+    <dimen name="textNormal">18sp</dimen>
+    <dimen name="textSmall">15sp</dimen>
+    <dimen name="marginNormal">16dp</dimen>
+    <dimen name="marginLarge">20dp</dimen>
+    <dimen name="radiusSmall">8dp</dimen>
+    <dimen name="radiusLarge">30dp</dimen>
+</resources>
