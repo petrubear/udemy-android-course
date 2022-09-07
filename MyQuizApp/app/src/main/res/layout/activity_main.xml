@@ -58,6 +58,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/e_g_jhon"
@@ -68,10 +69,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marginNormal"
-                android:background="@color/design_default_color_on_primary"
+                android:background="@drawable/round_corners_button_bg"
+                android:backgroundTint="@color/design_default_color_primary"
                 android:text="@string/start"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textNormal"

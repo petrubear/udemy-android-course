@@ -5,4 +5,6 @@
     <string name="please_enter_your_name">Please enter your name:</string>
     <string name="e_g_jhon">e.g. Jhon</string>
     <string name="start">Start</string>
+    <string name="submit">SUBMIT</string>
+    <string name="quiz_image">Quiz Image</string>
 </resources>
