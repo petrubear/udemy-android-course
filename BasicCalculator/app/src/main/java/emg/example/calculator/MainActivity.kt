@@ -5,17 +5,24 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 class MainActivity : AppCompatActivity() {
     private var textViewInput: TextView? = null
     private var lastNumeric: Boolean = false
     private var lastDot: Boolean = false
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         textViewInput = findViewById(R.id.textViewInput)
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout)
+        swipeRefreshLayout.setOnRefreshListener {
+            textViewInput?.text = ""
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     fun onDigit(view: View) {
