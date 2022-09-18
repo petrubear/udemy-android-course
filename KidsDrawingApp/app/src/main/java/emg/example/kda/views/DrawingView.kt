@@ -3,6 +3,7 @@ package emg.example.kda.views
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 
@@ -18,6 +19,7 @@ class DrawingView(
     private var mBrushSize: Float = 0.0f
     private var color = Color.BLACK
     private var canvas: Canvas? = null
+    private val mPaths = ArrayList<CustomPath>()
 
     init {
         setUpDrawing()
@@ -33,7 +35,7 @@ class DrawingView(
             it.strokeCap = Paint.Cap.ROUND
         }
         mCanvasPaint = Paint(Paint.DITHER_FLAG)
-        mBrushSize = 20.0f
+        //mBrushSize = 20.0f
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -49,6 +51,13 @@ class DrawingView(
         mCanvasBitmap?.let {
             canvas?.drawBitmap(it, 0f, 0f, mCanvasPaint)
         }
+
+        for (path in mPaths) {
+            mDrawPaint?.strokeWidth = path.brushThickness
+            mDrawPaint?.color = path.color
+            canvas?.drawPath(path, mDrawPaint!!)
+        }
+
         mDrawPath?.let { path ->
             if (!path.isEmpty) {
                 mDrawPaint?.let { paint ->
@@ -57,7 +66,6 @@ class DrawingView(
                     canvas?.drawPath(path, paint)
                 }
             }
-
         }
     }
 
@@ -84,6 +92,7 @@ class DrawingView(
                 }
             }
             MotionEvent.ACTION_UP -> {
+                mPaths.add(mDrawPath!!)
                 mDrawPath = CustomPath(color, mBrushSize)
             }
             else -> return false
@@ -92,6 +101,14 @@ class DrawingView(
         return true
     }
 
+    fun setSizeForBrush(newSize: Float) {
+        mBrushSize = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            newSize,
+            resources.displayMetrics
+        )
+        mDrawPaint?.strokeWidth = mBrushSize
+    }
 
     internal inner class CustomPath(
         var color: Int,
