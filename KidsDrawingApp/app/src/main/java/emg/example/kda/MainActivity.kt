@@ -3,9 +3,12 @@ package emg.example.kda
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -19,6 +22,13 @@ import emg.example.kda.views.DrawingView
 class MainActivity : AppCompatActivity() {
     private var drawingView: DrawingView? = null
     private var mImageButtonCurrentPaint: ImageButton? = null
+    private val openGalleryLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == RESULT_OK && it.data != null) {
+           val imageBackground: ImageView = findViewById(R.id.iv_background)
+           imageBackground.setImageURI(it.data?.data)
+        }
+    }
 
     private val requestPermission: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(
@@ -32,8 +42,11 @@ class MainActivity : AppCompatActivity() {
                         this@MainActivity,
                         "$permissionName is granted",
                         Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    ).show()
+                    val pickIntent = Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    openGalleryLauncher.launch(pickIntent)
+
                 } else {
                     if (permissionName == Manifest.permission.READ_EXTERNAL_STORAGE) {
                         Toast.makeText(
@@ -127,7 +140,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showRationaleDialog(title: String, message: String) {
+    private fun showRationaleDialog(title: String, message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(title)
         builder.setMessage(message)
