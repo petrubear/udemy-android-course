@@ -78,6 +78,16 @@ class MainActivity : AppCompatActivity() {
             showSizePickerDialog()
         }
 
+        val ibUndo = findViewById<ImageButton>(R.id.ib_undo)
+        ibUndo.setOnClickListener {
+            drawingView?.onClickUndo()
+        }
+
+        val ibRedo = findViewById<ImageButton>(R.id.ib_redo)
+        ibRedo.setOnClickListener {
+            drawingView?.onClickRedo()
+        }
+
         val ibGallery = findViewById<ImageButton>(R.id.ib_gallery)
         ibGallery.setOnClickListener {
             requestStoragePermission()
