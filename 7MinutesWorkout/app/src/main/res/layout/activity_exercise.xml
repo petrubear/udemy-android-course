@@ -18,11 +18,13 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        tools:text="Get Ready for the next exercise"
+        tools:text="Get Ready"
         android:textAllCaps="true"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
+        android:gravity="center"
+        android:lines="2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

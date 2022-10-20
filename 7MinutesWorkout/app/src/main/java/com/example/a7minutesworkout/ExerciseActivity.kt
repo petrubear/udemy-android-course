@@ -47,7 +47,7 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.flExerciseView?.visibility = View.INVISIBLE
         binding?.ivImage?.visibility = View.INVISIBLE
         binding?.tvExerciseName?.visibility = View.INVISIBLE
-        binding?.tvTitle?.text = "Get Ready for ${exerciseList[++currentExercisePosition].name}"
+        binding?.tvTitle?.text = "Get Ready for ${exerciseList[currentExercisePosition + 1].name}"
         if (restTimer != null) {
             restTimer?.cancel()
             restProgress = 0
