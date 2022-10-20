@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".ExerciseActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -17,7 +18,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:text="Get Ready For"
+        tools:text="Get Ready for the next exercise"
         android:textAllCaps="true"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
@@ -26,22 +27,24 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/flProgressBar" />
+        app:layout_constraintBottom_toTopOf="@+id/flRestView" />
 
     <FrameLayout
-        android:id="@+id/flProgressBar"
+        android:id="@+id/flRestView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/item_circular_color_accent_border"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
+        tools:visibility="visible">
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
             android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -70,6 +73,31 @@
         </LinearLayout>
 
     </FrameLayout>
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_jumping_jacks"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/tvExerciseName"
+        app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
+        />
+    <TextView
+        android:id="@+id/tvExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ExerciseName"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage"
+        />
+
     <FrameLayout
         android:id="@+id/flExerciseView"
         android:layout_width="100dp"
@@ -80,11 +108,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseName"
+        tools:visibility="visible">
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
             android:id="@+id/progressBarExercise"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -92,7 +121,7 @@
             android:progressDrawable="@drawable/circular_progress_bar"
             android:indeterminate="false"
             android:max="30"
-            android:progress="300"
+            android:progress="100"
             android:rotation="-90" />
 
         <LinearLayout
@@ -109,7 +138,7 @@
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                tools:text="30" />
+                tools:text="10" />
         </LinearLayout>
 
     </FrameLayout>

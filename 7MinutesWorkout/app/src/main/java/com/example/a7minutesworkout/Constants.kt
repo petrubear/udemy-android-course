@@ -1,0 +1,57 @@
+package com.example.a7minutesworkout
+
+import com.example.a7minutesworkout.model.ExerciseModel
+
+object Constants {
+    fun defaultExerciseList(): List<ExerciseModel> {
+
+        val jumpingJacks =
+            ExerciseModel(1, "Jumping Jacks", R.drawable.ic_jumping_jacks)
+        val wallSit = ExerciseModel(2, "Wall Sit", R.drawable.ic_wall_sit)
+        val pushUp = ExerciseModel(3, "Push Up", R.drawable.ic_push_up)
+        val abdominalCrunch =
+            ExerciseModel(4, "Abdominal Crunch", R.drawable.ic_abdominal_crunch)
+        val stepUpOnChair =
+            ExerciseModel(5, "Step Up On Chair", R.drawable.ic_step_up_onto_chair)
+        val squat = ExerciseModel(6, "Squat", R.drawable.ic_squat)
+        val tricepsDipOnChair = ExerciseModel(
+            7,
+            "Triceps Dip On Chair",
+            R.drawable.ic_triceps_dip_on_chair,
+            false,
+            false
+        )
+        val plank = ExerciseModel(8, "Plank", R.drawable.ic_plank)
+        val highKneesRunningInPlace = ExerciseModel(
+            9,
+            "High Knees Running In Place",
+            R.drawable.ic_high_knees_running_in_place,
+            false,
+            false
+        )
+        val lunges = ExerciseModel(10, "Lunges", R.drawable.ic_lunge)
+        val pushUpAndRotation = ExerciseModel(
+            11,
+            "Push Up And Rotation",
+            R.drawable.ic_push_up_and_rotation,
+            false,
+            false
+        )
+        val sidePlank = ExerciseModel(12, "Side Plank", R.drawable.ic_side_plank)
+
+        return listOf(
+            jumpingJacks,
+            wallSit,
+            pushUp,
+            abdominalCrunch,
+            stepUpOnChair,
+            squat,
+            tricepsDipOnChair,
+            plank,
+            highKneesRunningInPlace,
+            lunges,
+            pushUpAndRotation,
+            sidePlank
+        )
+    }
+}
