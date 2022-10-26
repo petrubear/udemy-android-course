@@ -7,6 +7,8 @@ import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.a7minutesworkout.adapter.ExerciseStatusAdapter
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
 import com.example.a7minutesworkout.model.ExerciseModel
 import java.util.*
@@ -31,6 +33,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var tts: TextToSpeech? = null
     private var player: MediaPlayer? = null
 
+    private var exerciseAdapter: ExerciseStatusAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -47,7 +51,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding?.progressBar?.visibility = View.GONE
 
         tts = TextToSpeech(this, this)
+
+        setUpExerciseStatusRecyclerView()
         setUpRestView()
+    }
+
+    private fun setUpExerciseStatusRecyclerView() {
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList)
+        binding?.rvExerciseStatus?.adapter = exerciseAdapter
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding?.rvExerciseStatus?.layoutManager = layoutManager
     }
 
     private fun setUpRestView() {
