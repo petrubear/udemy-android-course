@@ -11,8 +11,13 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import dagger.hilt.android.AndroidEntryPoint
 import emg.example.myquizapp.model.Question
+import emg.example.myquizapp.service.QuestionsService
+import emg.example.myquizapp.service.impl.FlagsQuestionService
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mCurrentPosition: Int = 1
@@ -30,6 +35,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var textViewOptionThree: TextView? = null
     private var textViewOptionFour: TextView? = null
     private var buttonSubmit: Button? = null
+
+    @Inject
+    lateinit var questionsService: FlagsQuestionService //TODO: inyectar con interfaz
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +61,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         textViewOptionFour?.setOnClickListener(this)
         buttonSubmit?.setOnClickListener(this)
 
-        mQuestionsList = Constants.getQuestions()
+        mQuestionsList = questionsService.getQuestions()
         setQuestion()
 
     }
