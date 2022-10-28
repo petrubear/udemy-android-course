@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -14,7 +15,6 @@ import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import emg.example.myquizapp.model.Question
 import emg.example.myquizapp.service.QuestionsService
-import emg.example.myquizapp.service.impl.FlagsQuestionService
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,7 +37,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var buttonSubmit: Button? = null
 
     @Inject
-    lateinit var questionsService: FlagsQuestionService //TODO: inyectar con interfaz
+    lateinit var questionsService: QuestionsService
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -152,6 +152,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         mCorrectAnswers++
                     }
                     answerView(question?.correctAnswer!!, R.drawable.correct_option_border_bg)
+                    Log.d("question", "=> Question $mCurrentPosition of ${mQuestionsList!!.size}")
                     if (mCurrentPosition == mQuestionsList!!.size) {
                         buttonSubmit?.text = "FINISH"
                     } else {
